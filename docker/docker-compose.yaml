@@ -1,0 +1,36 @@
+services:
+  # PULLING MYSQL IMAGE AND SETTING UP ENVIRONMENT
+  mysql:
+    image: "mysql:8.0.40"
+    container_name: "mysql"
+    restart: always
+    ports:
+      - "3366:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "db_laravel_demo"
+      MYSQL_USER: "newuser"
+      MYSQL_PASSWORD: "root"
+    volumes:
+      - 'mysql:/var/lib/mysql'
+
+  # BUILDING LARAVEL IMAGES WITH DOCKER FILE
+  laravel_app:
+    image: "krishgrewon/fileupload:latest"
+    container_name: "laravel_app"
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      COMPOSER_ALLOW_SUPERUSER: 1
+      ASSET_VERSION: 1.2.0
+    depends_on:
+      - "mysql"
+    volumes:
+      - '../public:/var/www/html/public'
+      - 'laravel_logs_storage:/var/www/html/storage'
+
+# VOLUMES THAT WILL BE USED FOR PERSISTENT DATA STORAGE
+volumes:
+  mysql:
+  laravel_logs_storage:
