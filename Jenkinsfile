@@ -28,7 +28,7 @@ pipeline{
             steps {
                 echo "Pushing docker image.."
                 script {
-                    withCredentials([usernamePassword(credentialsId: 'dc631ca1-369e-4ef5-b7b2-240bf7710d60', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    withCredentials([usernamePassword(credentialsId: 'f853c906-cfb5-4212-9bae-a699f452bf65', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                         sh "echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin"
                     }
                     sh "docker push $IMAGE_NAME:$IMAGE_TAG"
