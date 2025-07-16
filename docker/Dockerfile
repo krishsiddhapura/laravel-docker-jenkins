@@ -26,7 +26,7 @@ WORKDIR /var/www/html
 
 # COPIYING PROJECT FILES AND .env FILE INTO ROOT FOLDER
 COPY . /var/www/html
-COPY ./docker/php-src/.env /var/www/html/
+#COPY ./docker/php-src/.env /var/www/html/
 
 # GIVING PERMISSIONS TO FOLDERS
 RUN mkdir -p /var/lib/nginx/body && chown -R www-data:www-data /var/lib/nginx/ && chmod -R 775 /var/lib/nginx
