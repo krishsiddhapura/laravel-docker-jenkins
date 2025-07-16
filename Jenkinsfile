@@ -40,7 +40,7 @@ pipeline{
         stage('Production Release'){
             steps {
                 script {
-                    sh "docker compose -f /Users/kri55h/Sites/localhost/demo/docker-compose/docker-compose.yaml up"
+                    sh "docker compose -f /Users/kri55h/Sites/localhost/demo/docker-compose/docker-compose.yaml up -d"
                 }
             }
         }
